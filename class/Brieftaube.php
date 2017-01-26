@@ -55,7 +55,6 @@ class Brieftaube {
         $mail = $smtp->send($to, $headers, $body);
 
         if (PEAR::isError($mail)) {
-            //print $mail->getMessage();
             $error = $mail->getMessage();
             return false;
          } else {

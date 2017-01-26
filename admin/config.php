@@ -6,6 +6,11 @@
 <?php
 $divider = '@---@';
 $configKeys = array(
+    'webTitle' => _('Titel für die Webseite'),
+    'webText' => _('Text für die Webseite'),
+    $divider,
+    'mailSignature' => _('E-Mail-Signatur'),
+    $divider,
     'webUrl' => _('URL zur Seite'),
     $divider,
     'dbServer' => _('Datenbankserver'), 
@@ -17,12 +22,8 @@ $configKeys = array(
     'smtpPort' => _('SMTP-Port'), 
     'smtpUser' => _('Benutzername'), 
     'smtpPassword' => _('Passwort'),
-    'smtpFrom' => _('Antwortadresse'),
-    $divider,
-    'mailSignature' => _('E-Mail-Signatur'),
-    $divider,
-    'webTitle' => _('Titel für die Webseite'),
-    'webText' => _('Text für die Webseite'));
+    'smtpFrom' => _('Antwortadresse')
+);
 $message = '';
 switch(filter_input(INPUT_POST, 'action')) {
     case 'save':

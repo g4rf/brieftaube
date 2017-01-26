@@ -8,7 +8,9 @@ class Config {
     }
     
     public static function set($key, $value) {
-        if(! is_writable(self::CONFIGFILE)) return false;
+        if(! is_writable(self::CONFIGFILE)) {   
+            die(_('FATAL: Es fehlen Schreibrechte für die Konfigurationsdatei.'));
+        }
         
         $config = self::get();
         $config[$key] = $value;
@@ -18,8 +20,11 @@ class Config {
     
     public static function check() {
         if(! file_exists(self::CONFIGFILE)) {
-            file_put_contents(self::CONFIGFILE,
-                file_get_contents (self::CONFIGEXAMPLEFILE));
+            if(file_put_contents(self::CONFIGFILE,
+                    file_get_contents (self::CONFIGEXAMPLEFILE)) === false) {
+                // can't write config file
+                die(_('FATAL: Es fehlen Schreibrechte für die Konfigurationsdatei.'));
+            }
         }
     }    
 }

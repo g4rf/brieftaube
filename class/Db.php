@@ -58,6 +58,10 @@ class Db {
         return self::table('SELECT * FROM users');
     }
     
+    public static function getConfirmedUsers() {
+        return self::table('SELECT Email FROM users WHERE Unconfirmed="0"');
+    }
+
     public static function newUser($mail, $key) {
         return self::res("INSERT INTO users SET"
                 . " Email='" . self::sl($mail) . "',"

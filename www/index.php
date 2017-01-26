@@ -10,7 +10,7 @@
     <style><?=file_get_contents('../main.css')?></style>
 </head><body><div id="wrapper">
     <h1><?=Config::get()['webTitle']?></h1>
-    <p><?=Config::get()['webText']?></p>
+    <p><?=nl2br(Config::get()['webText'])?></p>
     
     <?php
         $message = '';

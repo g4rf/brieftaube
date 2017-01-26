@@ -40,14 +40,19 @@ class Brieftaube {
     }
     
     public static function send($to, $subject, $body, &$error = '') {
-        $from = Config::get()['smtpFrom'];
-        
+        $replyTo = Config::get()['smtpFrom'];
+        $from = Config::get()['smtpUser'];; // could be recognised as spam: Config::get()['smtpFrom'];
         $host = 'ssl://' . Config::get()['smtpServer'];
         $port = Config::get()['smtpPort'];
         $username = Config::get()['smtpUser'];
         $password = Config::get()['smtpPassword'];
 
-        $headers = array ('From' => $from, 'To' => $to, 'Subject' => $subject);
+        $headers = array(
+            'From' => $from, 
+            'To' => $to, 
+            'Subject' => $subject,
+            'Reply-To' => $replyTo,
+            'charset' => 'UTF-8');
         $smtp = Mail::factory('smtp',
             array ('host' => $host, 'port' => $port, 'auth' => true,
                 'username' => $username, 'password' => $password)

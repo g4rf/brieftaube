@@ -19,6 +19,11 @@ table tr:nth-child(even) td {
     background-color: #eee;
 }
 
+hr {
+    border: none;
+    border-top: solid 1px #ccc; 
+}
+
 form {
     margin: 15px;
 }

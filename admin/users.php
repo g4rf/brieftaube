@@ -24,6 +24,12 @@ if(strlen($message)) {
     ?><div class="message"><?=$message?></div><?php
 }
 ?>
+    
+<form method="post" action="export.php">
+    <button type="submit">
+        <?=_('Exportiere bestätigte E-Mail-Adressen als CSV')?>
+    </button>
+</form>
 
 <table>
     <tr>
